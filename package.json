@@ -1,0 +1,21 @@
+{
+    "name": "ABCmovies",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest",
+        "dev": "next",
+        "build": "next build",
+        "start": "next start"
+    },
+    "keywords": [],
+    "author": "Devendra Parkar",
+    "license": "ISC",
+    "dependencies": {
+        "isomorphic-unfetch": "3.0.0",
+        "next": "9.3.4",
+        "react": "16.13.1",
+        "react-dom": "16.13.1"
+    }
+}
