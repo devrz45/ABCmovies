@@ -1,13 +1,15 @@
 import Header from "./Header"
-
-const layoutStyle = {
-	margin: 20,
-	padding: 20,
-	border: "1px solid #DDD",
-}
+import Head from "next/head"
 
 const Layout = (props) => (
-	<div style={layoutStyle}>
+	<div>
+		<Head>
+			<title>ABCmovies.com</title>
+			<link
+				rel="stylesheet"
+				href="https://bootswatch.com/4/superhero/bootstrap.min.css"
+			/>
+		</Head>
 		<Header />
 		{props.children}
 	</div>
