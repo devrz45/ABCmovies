@@ -38,14 +38,9 @@ const SearchBox = (() => {
 					if (data.Response === "True") {
 						setSearch(url)
 						setData(data)
-					} else if (
-						data.Response === "False" &&
-						data.Error === "Too many results."
-					) {
+					} else if (data.Response === "False") {
 						setData(null)
-						setSearchError(
-							"Please provide a more specific search term."
-						)
+						setSearchError(data.Error)
 					}
 				})
 		}
