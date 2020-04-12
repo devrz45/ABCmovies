@@ -1,38 +1,44 @@
-import Link from "next/link"
 import Layout from "../components/MyLayout"
-import fetch from "isomorphic-unfetch"
-import { server } from "../config"
+import { withDataContext } from "../utils/dataContext"
+import { withSearchContext } from "../utils/searchContext"
+import SearchBox from "../components/SearchBox"
+import MovieList from "../components/MovieList"
 
-const MovieLink = ({ movie }) => (
-	<li>
-		<Link href={`/movie?id=${movie.imdbID}`}>
-			<a title={movie.Title}>{movie.Title}</a>
-		</Link>
-	</li>
-)
-
-function Movies(props) {
+const Landing = (props) => {
 	return (
 		<Layout>
-			<h1>My Movies</h1>
-			<ul>
-				{props.shows.map((show) => (
-					<MovieLink movie={show} key={show.imdbID} />
-				))}
-			</ul>
+			<SearchBox {...props} />
+			<MovieList />
 		</Layout>
 	)
 }
 
-Movies.getInitialProps = async function () {
-	const res = await fetch(`${server}/api/search?s=abc&page=1`)
-	const data = await res.json()
+// Landing.getInitialProps = async function (context) {
+// 	const { s, page } = context.query
+// 	console.log(context.query)
+// 	if (s) {
+// 		let backUrl = `/api/search?s=${s}`
+// 		backUrl += context.query.type ? `&type=${context.query.type}` : ""
+// 		backUrl += `&page=${page}`
 
-	console.log(`Show data fetched. Count: ${data.Search.length}`)
+// 		const res = await fetch(backUrl)
+// 		const data = await res.json()
 
-	return {
-		shows: data.Search || [],
-	}
-}
+// 		console.log(`Fetched List: ${data.Search}`)
 
-export default Movies
+// 		return { data, queryData: context.query, backUrl }
+// 	} else return { data: null, queryData: null, backUrl: null }
+// }
+
+export default withSearchContext(withDataContext(Landing))
+
+// Movies.getInitialProps = async function () {
+// 	const res = await fetch(`${server}/api/search?s=abc&page=1`)
+// 	const data = await res.json()
+
+// 	console.log(`Show data fetched. Count: ${data.Search.length}`)
+
+// 	return {
+// 		shows: data.Search || [],
+// 	}
+// }
