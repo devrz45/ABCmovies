@@ -98,7 +98,7 @@ Movie.getInitialProps = async function (context) {
 	const res = await fetch(`${server}/api/search?i=${id}`)
 	const movie = await res.json()
 
-	console.log(`Fetched movie: ${movie.Title}`)
+	// console.log(`Fetched movie: ${movie.Title}`)
 
 	return { movie, backUrl }
 }

@@ -51,7 +51,6 @@ const SearchBox = (() => {
 
 		useEffect(() => {
 			if (router.query.s) {
-				console.log(router.query)
 				let { s, page } = router.query
 				let url = `/api/search?s=${s}`
 				url += router.query.type ? `&type=${router.query.type}` : ""
