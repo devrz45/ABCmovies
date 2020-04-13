@@ -31,14 +31,3 @@ const Landing = (props) => {
 // }
 
 export default withSearchContext(withDataContext(Landing))
-
-// Movies.getInitialProps = async function () {
-// 	const res = await fetch(`${server}/api/search?s=abc&page=1`)
-// 	const data = await res.json()
-
-// 	console.log(`Show data fetched. Count: ${data.Search.length}`)
-
-// 	return {
-// 		shows: data.Search || [],
-// 	}
-// }

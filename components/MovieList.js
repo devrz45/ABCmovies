@@ -32,7 +32,6 @@ const MovieList = () => {
 			let searchParams = search.split("?")[1]
 			searchParams = searchParams.slice(0, -1) + page
 			url = url + "&" + searchParams
-			console.log(searchParams)
 		}
 		return url
 	}
